@@ -112,7 +112,7 @@ public_users.get('/review/:isbn',function (req, res) {
 
 		const isbn = req.params.isbn;
 		if (isbn in books) {
-			res.send(books[isbn].review);
+			res.send(books[isbn].reviews);
 			isFound = true;
 		}
 
@@ -120,7 +120,7 @@ public_users.get('/review/:isbn',function (req, res) {
 			res.status(404).send("isbn not found");
 		}
 
-		resolve("successfully sending book details based on title")
+		resolve("successfully sending book review based on isbn")
 
 	}).then((message) => {
 		console.log(message)
