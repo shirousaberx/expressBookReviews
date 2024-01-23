@@ -30,13 +30,11 @@ public_users.post("/register", (req,res) => {
 public_users.get('/',function (req, res) {
   //Write your code here
 	let promise = new Promise((resolve, reject) => {
-		return res.send(JSON.stringify(books, null, 4));
-	}).then((result) => {
-		console.log("successfully sending book list")
-	}).catch((err) => {
-		console.log("failed sending book list")
+		res.send(JSON.stringify(books, null, 4));
+		resolve("successfully sending book list");
+	}).then((message) => {
+		console.log(message)
 	})
-
 });
 
 // Get book details based on ISBN
@@ -45,10 +43,9 @@ public_users.get('/isbn/:isbn',function (req, res) {
 	let promise = new Promise((resolve, reject) => {
 		const isbn = req.params.isbn;
 		res.json(books[isbn])
-	}).then((result) => {
-		console.log("successfully sending book details based on isbn")
-	}).catch((err) => {
-		console.log("failed successfully sending book details based on isbn")
+		resolve("successfully sending book details based on isbn")
+	}).then((message) => {
+		console.log(message)
 	})
 });
   
@@ -71,10 +68,10 @@ public_users.get('/author/:author',function (req, res) {
 			res.status(404).send("author not found")
 		}
 
-	}).then((result) => {
-		console.log("successfully sending book details based on author")
-	}).catch((err) => {
-		console.log("failed successfully sending book details based on author")
+		resolve("successfully sending book details based on author")
+
+	}).then((message) => {
+		console.log(message)
 	})
 });
 
@@ -98,10 +95,10 @@ public_users.get('/title/:title',function (req, res) {
 			res.status(404).send("title not found")
 		}
 
-	}).then((result) => {
-		console.log("successfully sending book details based on title")
-	}).catch((err) => {
-		console.log("failed successfully sending book details based on title")
+		resolve("successfully sending book details based on title")
+
+	}).then((message) => {
+		console.log(message)
 	})
   
 });
@@ -123,10 +120,10 @@ public_users.get('/review/:isbn',function (req, res) {
 			res.status(404).send("isbn not found");
 		}
 
-	}).then((result) => {
-		console.log("successfully sending book details based on title")
-	}).catch((err) => {
-		console.log("failed successfully sending book details based on title")
+		resolve("successfully sending book details based on title")
+
+	}).then((message) => {
+		console.log(message)
 	})
 });
 
